@@ -11,9 +11,16 @@ loadBtn.addEventListener('click', async function(e){ // bir dinleyici yerleştir
     statusMessage.textContent = 'Loading tasks...';
 
 
-    try {
+      try {
     const rawTasks = await fetchTasks();
-    console.log(rawTasks);
+
+    const jsonString = JSON.stringify(rawTasks); //metne çevirdi
+    console.log(jsonString);
+
+    const parsedTasks = JSON.parse(jsonString);
+    const taskInstances = parsedTasks.map(t => new Task(t.id, t.title, t.completed));
+    console.log(taskInstances);
+
     statusMessage.textContent = "";
   } catch (error) {
     statusMessage.textContent = "Failed to load tasks.";
