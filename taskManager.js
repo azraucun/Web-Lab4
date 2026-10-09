@@ -20,3 +20,31 @@ export class Task {
 
     }
 }
+
+export class TaskManager {
+    constructor() {
+    this.tasks = [];
+  }
+
+  setTasks(tasks) {
+    this.tasks = [...tasks];
+  }
+
+  addTask(task) {
+    this.tasks = [...this.tasks, task];
+
+  }
+   removeTask(taskId) {
+    this.tasks = this.tasks.filter(task => task.id !== taskId); //filter yeni liste döndürür
+  }
+  toggleTask(taskId) {
+    this.tasks = this.tasks.map(task => {
+      if (task.id === taskId) {
+        return task.toggle();
+      }
+      return task;
+    });
+  }
+}
+
+

@@ -1,4 +1,4 @@
-import {Task} from './taskManager.js';
+import { Task, TaskManager } from "./taskManager.js";
 
 
 
